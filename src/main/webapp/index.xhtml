@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+>
+<h:head>
+    <h:outputStylesheet library="css" name="MainPage.css"/>
+</h:head>
+<h:body>
+
+    <h1>Hello Dear Interviewer!</h1>
+    <h3>This app will let you get count of days off between two dates</h3>
+    <h:form id="form">
+
+        <p:growl id="msgs" showDetail="true"/>
+        <h:panelGrid columns="6" cellpadding="5" styleClass="centred-form" >
+            <p:outputLabel for="dateFromCalendar" value="Date from: "/>
+            <p:calendar id="dateFromCalendar" value="#{mainPage.dateFrom}"
+                        pattern="dd-MM-yyyy" mask="true" required="true"
+                        requiredMessage="this is required field">
+                <p:ajax event="change" update="submitButton"/>
+                <p:ajax event="dateSelect" update="submitButton"/>
+            </p:calendar>
+            <p:message for="dateFromCalendar"/>
+            <p:outputLabel for="dateToCalendar" value="Date to: "/>
+            <p:calendar id="dateToCalendar" value="#{mainPage.dateTo}"
+                        pattern="dd-MM-yyyy" mask="true" required="true"
+                        requiredMessage="this is required field">
+                <p:ajax event="change" update="submitButton"/>
+                <p:ajax event="dateSelect" update="submitButton"/>
+            </p:calendar>
+            <p:message for="dateToCalendar"/>
+            <p:commandButton id="submitButton" value="submit"
+                             actionListener="#{mainPage.getDaysOffBetweenTwoDates()}"
+                             update=":form"
+            />
+        </h:panelGrid>
+        <p:outputLabel id="test" value="The number of days off between these dates is: #{mainPage.result}"/>
+
+
+    </h:form>
+</h:body>
+</html>

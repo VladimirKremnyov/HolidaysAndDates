@@ -1,0 +1,23 @@
+/** Add resources.css rules here for your application. */
+
+h1 {
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+}
+
+h3 {
+    font-weight: normal;
+    text-align: center;
+}
+
+td, a, div, .p {
+    font-family: arial, sans-serif;
+}
+
+body {
+    font-family: arial, sans-serif;
+    overflow-x: hidden;
+}
+
+
